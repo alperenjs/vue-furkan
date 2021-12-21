@@ -2,10 +2,21 @@ var vueTask = new Vue({
   el: '#app',
   data: {
     message: 'Selam',
-    api: 'https://jsonplaceholder.typicode.com/posts'
+    api: 'https://jsonplaceholder.typicode.com/posts',
+    userList: []
   },
-  methods: {},
+  methods: { getUserList() {
+    let that = this;
+    axios.get('https://jsonplaceholder.typicode.com/posts')
+    .then(function (veri) {
+      that.userList = veri.data
+      // handle success
+    console.log(that.userList)
+    })
+    
+    }},
   created() {
+    this.getUserList();
     //apiden veri çekme işlemleri burada olur
  },
   mounted() {
